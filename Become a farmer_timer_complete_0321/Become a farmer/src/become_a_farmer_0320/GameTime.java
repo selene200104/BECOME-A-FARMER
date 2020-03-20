@@ -20,7 +20,7 @@ public class GameTime extends Thread {
 			timerLabel.setText("                           " + minute + " : " + second);
 			
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				second--;
 				
 				//1분 이상일 때는, 초가 0보다 작아질때 59초로 돌아간다. 
@@ -31,12 +31,13 @@ public class GameTime extends Thread {
 						second += 59;
 					}
 				
-				//만약 시간제한인 10분이 지나면 게임오버라고 창이 뜬다. 
+				//만약 시간제한인 10분이 지나면 게임오버라고 창이 뜨고 확인을 누르면 게임창이 꺼진다. 
 				}else if(minute == 0) {
 					
-					if (second < 0) {
+					if (second < 0) {				
 						JOptionPane.showMessageDialog(null, "10분이 지났습니다! GAME OVER!", "SYSTEM", JOptionPane.ERROR_MESSAGE);					
-						break;
+						//break;
+						System.exit(0);
 					}
 					
 				}	
